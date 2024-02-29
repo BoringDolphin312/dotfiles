@@ -5,6 +5,5 @@ return {
     'airblade/vim-gitgutter',
     'scrooloose/nerdcommenter',
     'townk/vim-autoclose',
-    'vim-airline/vim-airline',
-    'sheerun/vim-polyglot'
+    'vim-airline/vim-airline'
 }
