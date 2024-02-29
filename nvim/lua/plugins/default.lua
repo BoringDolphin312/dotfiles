@@ -4,5 +4,7 @@ return {
     'scrooloose/syntastic',
     'airblade/vim-gitgutter',
     'scrooloose/nerdcommenter',
-    'townk/vim-autoclose'
+    'townk/vim-autoclose',
+    'vim-airline/vim-airline',
+    'sheerun/vim-polyglot'
 }
