@@ -39,12 +39,38 @@ require("lazy").setup({import = "plugins"})
 vim.cmd[[colorscheme tokyonight-moon]]
 
 require'lspconfig'.clangd.setup{}
+require'lspconfig'.cmake.setup{}
+require'lspconfig'.pylyzer.setup{}
 
 vim.lsp.start({
     name = 'clangd',
     cmd = { "clangd" },
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
     root_dir = vim.fs.dirname(vim.fs.find({'.clangd', '.clang-tidy', '.clang-format', 'compile_commands.json', 'compile_flags.txt', 'configure.ac', '.git'}, { upward = true })[1]), 
+    single_file_support = true
+})
+
+vim.lsp.start({
+    name = 'cmake',
+    cmd = { "cmake-language-server" },
+    filetypes = { "cmake-language-server" },
+    init_options = { buildDirectory = "build" },
+    root_dir = vim.fs.dirname(vim.fs.find({'CMakePresets.json', 'CTestConfig.cmake', '.git', 'build', 'cmake'}, { upward = true })[1]), 
+    single_file_support = true
+})
+
+vim.lsp.start({
+    name = "python",
+    cmd = { "pylyzer", "--server" },
+    filetypes = {"python"},
+    settings = {
+        python = {
+            checkOnType = false,
+            diagnostics = true,
+            inlayHints = true,
+            smartCompletion = true
+        }
+    },
     single_file_support = true
 })
 
