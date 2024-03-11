@@ -5,5 +5,6 @@ return {
     'airblade/vim-gitgutter',
     'scrooloose/nerdcommenter',
     'townk/vim-autoclose',
-    'vim-airline/vim-airline'
+    'vim-airline/vim-airline',
+    'kyazdani42/nvim-tree.lua'
 }
