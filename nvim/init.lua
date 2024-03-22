@@ -20,6 +20,8 @@ vim.cmd([[ set background=dark ]])
 vim.cmd([[ set mouse=a ]])
 vim.cmd([[ filetype plugin indent on ]])
 vim.cmd([[ syntax on ]])
+vim.cmd([[ set relativenumber ]])
+vim.cmd([[ set foldmethod=manual ]])
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -38,8 +40,11 @@ require("lazy").setup({import = "plugins"})
 
 vim.cmd[[colorscheme tokyonight-moon]]
 
+require'neoconf'.setup({})
+
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.cmake.setup{}
+require'lspconfig'.pylsp.setup{}
 
 vim.lsp.start({
     name = 'clangd',
@@ -55,6 +60,13 @@ vim.lsp.start({
     filetypes = { "cmake-language-server" },
     init_options = { buildDirectory = "build" },
     root_dir = vim.fs.dirname(vim.fs.find({'CMakePresets.json', 'CTestConfig.cmake', '.git', 'build', 'cmake'}, { upward = true })[1]), 
+    single_file_support = true
+})
+
+vim.lsp.start({
+    name = 'pylsp',
+    cmd = { "pylsp" },
+    filetypes = { "python" },
     single_file_support = true
 })
 

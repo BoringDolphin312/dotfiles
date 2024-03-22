@@ -6,5 +6,6 @@ return {
     'scrooloose/nerdcommenter',
     'townk/vim-autoclose',
     'vim-airline/vim-airline',
-    'kyazdani42/nvim-tree.lua'
+    'kyazdani42/nvim-tree.lua',
+    'folke/neoconf.nvim'
 }
